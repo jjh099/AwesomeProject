@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 
-const Input = ({onChangeText}) => {
+const Input = ({onChangeText, todoText}) => {
   // onChangeInput : onChangeText
   const onChangeInput = text => {
     // onChangeText <- text
@@ -15,6 +15,7 @@ const Input = ({onChangeText}) => {
         onChangeText={onChangeInput}
         maxLength={20}
         autoCapitalize="none"
+        value={todoText}
       />
     </>
   );

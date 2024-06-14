@@ -3,18 +3,25 @@ import React from 'react';
 import IconButton from './IconButton';
 import Icons from '../Icons';
 
-const Task = ({data}) => {
+const Task = ({data, deleteTask, checkCompleted}) => {
   return (
     <>
-      {data.map((item, idx) => {
+      {/* [...data].reverse() : 입력된 data를 복사해서 입력한게 첫번째로 나옴 */}
+      {[...data].reverse().map((item, idx) => {
         return (
-          <View style={styles.container} kety={idx}>
-            {/* Icons에서 가져옴 */}
-            <IconButton icon={Icons.check} onPress={() => alert('check')} />
+          <View key={idx} style={styles.container}>
+            <IconButton
+              icon={item.completed ? Icons.checked : Icons.check}
+              onPress={() => checkCompleted(item.id)}
+            />
             <Text style={{flex: 1}}>{item.text}</Text>
-            {/* <IconButton icon={Icons.checked} onPress={() => alert('checked')} /> */}
-            <IconButton icon={Icons.edit} onPress={() => alert('edit')} />
-            <IconButton icon={Icons.delete} onPress={() => alert('delete')} />
+            {item.completed || (
+              <IconButton icon={Icons.edit} onPress={() => alert('edit')} />
+            )}
+            <IconButton
+              icon={Icons.delete}
+              onPress={() => deleteTask(item.id)}
+            />
           </View>
         );
       })}
