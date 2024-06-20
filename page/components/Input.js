@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {Platform, StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 
 const Input = ({onChangeText, todoText}) => {
@@ -25,9 +25,12 @@ export default Input;
 
 const styles = StyleSheet.create({
   input: {
-    width: '100%',
-    backgroundColor: '#cecece',
+    width: '80%',
+    backgroundColor: Platform.select({android: '#eeeeee', ios: '#eeeeee'}),
     borderRadius: 10,
     paddingHorizontal: 16,
+    height: Platform.select({
+      ios: 50,
+    }),
   },
 });

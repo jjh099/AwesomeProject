@@ -42,7 +42,7 @@ const App = () => {
     });
     setRandom(newArray);
   };
-  const onChangeText = text => {
+  const onChangeText = (text: string) => {
     console.log(text);
   };
 
